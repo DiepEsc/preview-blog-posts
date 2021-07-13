@@ -17,11 +17,11 @@ export const meta = {
   `
 }
 
-One of the hardest constraints we've had to deal with as we've improved Tailwind CSS over the years is the generated file size in development. With enough customizations to your config file, the generated CSS can reach 10mb or more, and there's only so much CSS that build tools and even the browser itself will comfortably tolerate.
+Một trong những thách thức đối với đội ngũ chúng tôi trong thời gian qua chính là giải quyết vấn đề kích thước file quá lớn khi build. Bạn tối ưu cho đến mấy thì file CSS vẫn lớn như thế, 10MB hoặc hơn là chuyện quá đỗi bình thường. Tôi không chắc là build tool với mấy cái trình duyệt sẽ thoải mái lắm đâu 😁😁😁.
 
-For that reason, you've always had to be careful about expensive changes to your config file like adding too many extra breakpoints or enabling extra variants like `disabled` or `focus-visible`.
+Vì thế, bạn luôn phải cẩn trọng về khi thêm breakpoint hay kích hoạt các variant như `disabled` hay `focus-visible`.
 
-Today I'm super excited to share a new project we've been working on that makes these considerations a thing of the past: [**a just-in-time compiler for Tailwind CSS**](https://github.com/tailwindlabs/tailwindcss-jit).
+Hôm nay tôi rất vui khi được giới thiệu với các bạn một dự án mang đầy tính bước ngoặt để giải quyết vấn đề này: [**JIT compiler cho Tailwind**](https://github.com/tailwindlabs/tailwindcss-jit).
 
 <!--more-->
 
@@ -38,11 +38,11 @@ Today I'm super excited to share a new project we've been working on that makes 
 
 [**@tailwindcss/jit**](https://github.com/tailwindlabs/tailwindcss-jit) là một thư viện (hiện đang trong giai đoạn thử nghiệm) biên dịch CSS _theo nhu cầu của bạn_, thay vì generate hàng đống file nhưng chỉ xài 50% 😑😑😑.
 
-Lợi thế của thư viện này bao gồm:
+## Ưu điểm
 
 - **Build time cực nhanh**. Lần đầu init, Tailwind có thể mất đến 3–8s để biên dịch, thậm chí lên đến 30–45s khi có Webpack vì Webpack gặp khó khăn trong việc xử lí các file CSS lớn. `@tailwindcss-jit` biên dịch nhanh gấp nhiều lần, khoảng 800ms với các dự án lớn _(thậm chí có thể đạt 3ms nếu được tối ưu tốt)_, bất kể bạn sử dụng build tool nào.
 
-- **Tất cả variant đều được kích hoạt sẵn**. Các variant như `focus-visible`, `active`, `disabled`,... mặc định bị vô hiệu hóa do các vấn đề liên quan đến kích thước file. Since this library generates styles on demand, you can use any variant you want, whenever you want. Bạn thậm chí có thể kết hợp nhiều variant lại với nhau: `sm:hover:active:disabled:opacity-75`. Never configure your variants again 😀😀😀.
+- **Tất cả variant đều được kích hoạt sẵn**. Các variant như `focus-visible`, `active`, `disabled`,... mặc định bị vô hiệu hóa do các vấn đề liên quan đến kích thước file. Nhưng giờ đã khác xưa rồi. Bạn có thể sử dụng bất cứ variant nào, mọi lúc mọi nơi. Bạn thậm chí có thể kết hợp nhiều variant lại với nhau: `sm:hover:active:disabled:opacity-75`. Never configure your variants again 😀😀😀.
 
 - **Tạo các style tùy chỉnh mà không cần viết custom class**. Cần một giá trị đặc biệt mà Tailwind lại không support, như `top: -113px` chẳng hạn? Bây giờ bạn đã có thể viết các custom class dưới dạng `name-[value]`. Hoạt động với cả @variants.
 
@@ -50,7 +50,7 @@ Lợi thế của thư viện này bao gồm:
 
 - **Hiệu năng tốt hơn**. Cùng với việc các bản dev ngày càng trở nên nhỏ gọn (xấp xỉ bản build), trình duyệt không cần phải biên dịch và quản lí cả chục MB pre-generated CSS như trước. `@tailwindcss-jit` giúp các dự án, đặc biệt là những dự án có cấu hình phức tạp, trở nên linh hoạt hơn.
 
-Cài đặt `@tailwindcss/jit` và cấu hình trong PostCSS như này:
+Cài đặt `@tailwindcss/jit` và cấu hình trong PostCSS như sau:
 
 ```shell
 npm install -D @tailwindcss/jit tailwindcss postcss autoprefixer
@@ -68,7 +68,7 @@ module.exports = {
 
 Hiện tại thì `@tailwindcss-jit` đang được phát triển như một thư viện độc lập, nhưng khi hoàn thành, chúng tôi sẽ hợp nhất nó vào `tailwindcss` như là một optional config. Ở các phiên bản từ 3.0+ trở về sau, nó sẽ mặc định được kích hoạt.
 
-Tìm hiểu thêm về dự án **[tại đây](https://github.com/tailwindlabs/tailwindcss-jit)**. Hãy trải nghiệm và cho chúng tôi biết cảm nghĩ của bạn!
+Tìm hiểu thêm về dự án [**tại đây**](https://github.com/tailwindlabs/tailwindcss-jit). Hãy trải nghiệm và cho chúng tôi biết cảm nghĩ của bạn!
 
 
 &nbsp;
