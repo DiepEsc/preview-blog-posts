@@ -9,9 +9,9 @@ export const meta = {
   image,
   footer: `
     <p>
-      Ready to try it out?
+      Bạn đã sẵn sàng?
       <a href="https://github.com/tailwindlabs/tailwindcss-jit" class="font-medium text-teal-600 hover:text-teal-700">
-        Get started →
+        Trải nghiệm ngay →
       </a>
     </p>
   `
@@ -36,13 +36,13 @@ Today I'm super excited to share a new project we've been working on that makes 
   ></iframe>
 </div>
 
-[**@tailwindcss/jit**](https://github.com/tailwindlabs/tailwindcss-jit) is a new experimental library that compiles all of your CSS _on-demand_ as you author your template files, instead of generating your entire stylesheet up front.
+[**@tailwindcss/jit**](https://github.com/tailwindlabs/tailwindcss-jit) là một thư viện (hiện đang trong giai đoạn thử nghiệm) biên dịch CSS _theo nhu cầu của bạn_, thay vì generate hàng đống file nhưng chỉ xài 50% 😑😑😑.
 
-This comes with a lot of advantages:
+Lợi thế của thư viện này bao gồm:
 
-- **Build time cực nhanh**. Lần đầu init, Tailwind có thể mất đến 3–8s để biên dịch, thậm chí lên đến 30–45s in webpack projects because webpack struggles with large CSS files. This library can compile even the biggest projects in about 800ms _(with incremental rebuilds as fast as 3ms)_, no matter what build tool you're using.
+- **Build time cực nhanh**. Lần đầu init, Tailwind có thể mất đến 3–8s để biên dịch, thậm chí lên đến 30–45s khi có Webpack vì Webpack gặp khó khăn trong việc xử lí các file CSS lớn. `@tailwindcss-jit` biên dịch nhanh gấp nhiều lần, khoảng 800ms với các dự án lớn _(thậm chí có thể đạt 3ms nếu được tối ưu tốt)_, bất kể bạn sử dụng build tool nào.
 
-- **Every variant is enabled out of the box**. Variants like `focus-visible`, `active`, `disabled`, and others are not normally enabled by default due to file-size considerations. Since this library generates styles on demand, you can use any variant you want, whenever you want. You can even stack them like `sm:hover:active:disabled:opacity-75`. Never configure your variants again.
+- **Tất cả variant đều được kích hoạt sẵn**. Các variant như `focus-visible`, `active`, `disabled`,... mặc định bị vô hiệu hóa do các vấn đề liên quan đến kích thước file. Since this library generates styles on demand, you can use any variant you want, whenever you want. Bạn thậm chí có thể kết hợp nhiều variant lại với nhau: `sm:hover:active:disabled:opacity-75`. Never configure your variants again 😀😀😀.
 
 - **Tạo các style tùy chỉnh mà không cần viết custom class**. Cần một giá trị đặc biệt mà Tailwind lại không support, như `top: -113px` chẳng hạn? Bây giờ bạn đã có thể viết các custom class dưới dạng `name-[value]`. Hoạt động với cả @variants.
 
@@ -69,3 +69,10 @@ module.exports = {
 Hiện tại thì `@tailwindcss-jit` đang được phát triển như một thư viện độc lập, nhưng khi hoàn thành, chúng tôi sẽ hợp nhất nó vào `tailwindcss` như là một optional config. Ở các phiên bản từ 3.0+ trở về sau, nó sẽ mặc định được kích hoạt.
 
 Tìm hiểu thêm về dự án **[tại đây](https://github.com/tailwindlabs/tailwindcss-jit)**. Hãy trải nghiệm và cho chúng tôi biết cảm nghĩ của bạn!
+
+
+&nbsp;
+
+## Note
+
+Ở thời điểm tôi dịch bài này thì Tailwind mới tới phiên bản v2.2.4, mà đã tích hợp JIT compiler cmnr 🤣🤣🤣.
